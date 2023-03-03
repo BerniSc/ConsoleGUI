@@ -40,16 +40,13 @@ void getCharWithoutEnterVoid() {
 
 int main(int argc, char *argv[]) {
     // Starting simple GUI Controller for testing
-    GUI_Controller test("Hi");
-    int test1 = 0;
-    int test2 = 0;
-    //Slider *s1 = new Slider(test1);
-    //Slider *s2 = new Slider(test2);
-    //std::cout << s1 << std::endl;
-    //std::cout << s2 << std::endl;
-    //test.addElement(s1);
-    test.addElement(new Slider(test1));
-    test.addElement(new Slider(test2));
+    GUI_Controller test_controller("Test Controller");
+    int test_var_1 = 0;
+    int test_var_2 = 0;
+    int test_var_3 = 0;
+    test_controller.addElement(new Slider(test_var_1, 10, -5));
+    test_controller.addElement(new Slider(test_var_2, 50, 0));
+    test_controller.addElement(new Slider(test_var_3, 100, 0));
 
     std::thread inputThread(getCharWithoutEnterVoid); 
 
@@ -62,29 +59,37 @@ int main(int argc, char *argv[]) {
             stop = !stop;
             input = '#';
             break;
+        //Move single number left
         case 'a' :
-            test.changeCurrentElement(gui_config::down);
+            test_controller.changeCurrentElement(gui_config::down);
             input = '#';
             break;
+        //Move Large Chunck left -> (10 %)
+        case 'A' :
+            break;
+        //Move single number right
         case 'd' :
-            test.changeCurrentElement(gui_config::up);
+            test_controller.changeCurrentElement(gui_config::up);
             input = '#';
             break;
+        //Move Large Chunk right -> (10 %)
+        case 'D' :
+            break;
+        //Switch selected Slider Up
         case 'w' :
-            test.switchElement(gui_config::down);
+            test_controller.switchElement(gui_config::down);
             input = '#';
             break;
+        //Switch selected Slider Down
         case 's' :
-            test.switchElement(gui_config::up);
+            test_controller.switchElement(gui_config::up);
             input = '#';
             break;
+        //Default Value
         case '#' :
             break;
-        default:
-            test.printGUI();
-            break;
         }
-        test.printGUI();
+        test_controller.printGUI();
 
         //std::this_thread::sleep_for(std::chrono::milliseconds(250));
     }

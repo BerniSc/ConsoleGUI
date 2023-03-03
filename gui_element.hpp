@@ -2,6 +2,7 @@
 #define GUI_ELEMENT_HPP
 
 #include <iostream>
+#include <iomanip>
 
 #include "gui_config.hpp"
 

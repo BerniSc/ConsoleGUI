@@ -4,8 +4,6 @@
 #include "gui_element.hpp"
 #include "gui_config.hpp"
 
-#include <iostream>
-
 class Slider : public GUI_Element {
     private:
         const int size;
@@ -18,7 +16,7 @@ class Slider : public GUI_Element {
 
         virtual void changeElement(gui_config::direction) override;
 
-        Slider(int &variable);
+        Slider(int &variable, int size, int min);
 };
 
 #endif
