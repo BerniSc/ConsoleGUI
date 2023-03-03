@@ -44,9 +44,11 @@ int main(int argc, char *argv[]) {
     int test_var_1 = 0;
     int test_var_2 = 0;
     int test_var_3 = 0;
+    int test_var_4 = 0;
     test_controller.addElement(new Slider(test_var_1, 10, -5));
     test_controller.addElement(new Slider(test_var_2, 50, 0));
     test_controller.addElement(new Slider(test_var_3, 100, 0));
+    test_controller.addElement(new Slider(test_var_4, 10, 0));
 
     std::thread inputThread(getCharWithoutEnterVoid); 
 

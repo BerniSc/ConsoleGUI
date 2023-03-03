@@ -1,11 +1,12 @@
 #include "slider.hpp"
 
 Slider::Slider(int &variable, int size, int min) : variable(variable), size(size), min(min) {
+    variable = min;
     std::cout << "Created Slider" << std::endl;
 }
 
 void Slider::printElement() {
-    int lengthStatus = variable * gui_config::sliderWidth / this->size;
+    int lengthStatus = (variable - min) * gui_config::sliderWidth / this->size;
     int widthCounter = 8;
     if(this->getSelected()) {
         std::cout << std::setw(widthCounter + lengthStatus) << variable << std::endl;
@@ -26,7 +27,8 @@ void Slider::printElement() {
 }
 
 void Slider::changeElement(gui_config::direction direction) {
-    if((this->variable + direction) >= 0 && (this->variable + direction) <= this->size) {
+    //if((this->variable + direction) >= 0 && (this->variable + direction) <= this->size) {
+    if((this->variable + direction - min) >= 0 && (this->variable + direction - min) <= this->size) {
         variable += direction;
     }
 }
