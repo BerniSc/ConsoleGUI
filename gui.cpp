@@ -1,3 +1,10 @@
+/*
+    DEPRECATED
+    FOR TESTING PURPOSES ONLY
+*/
+
+
+/*
 #include "gui_controller.hpp"
 #include "gui_element.hpp"
 #include "slider.hpp"
@@ -50,12 +57,13 @@ int main(int argc, char *argv[]) {
     test_controller.addElement(new Slider(test_var_2, 50, 0, "test_2"));
     test_controller.addElement(new Slider(test_var_3, 100, 0, "test_3"));
     test_controller.addElement(new Slider(test_var_4, 10, 0, "test_4"));
+    
     bool test_var_5 = false;
     ButtonGroup *bg = new ButtonGroup();
-
     bg->addButton(new Button(test_var_5, "Test3"));
     bg->addButton(new Button(test_var_5, "Test2"));
-    bg->addButton(new Button(test_var_5, "Test"));
+    bg->addButton(new Button(test_var_5, "Test1"));
+    bg->addButton(new Button(test_var_5, "Sizing Test 0"));
     test_controller.addElement(bg);
 
     test_controller.addElement(new Slider(test_var_4, 10, 0, "test_5"));
@@ -109,10 +117,10 @@ int main(int argc, char *argv[]) {
         case '#' :
             test_controller.printGUI();
             break;
-        /*case 'i' :
-            test_controller.printGUI();
-            input = '#';
-            break;*/
+        //case 'i' :
+        //    test_controller.printGUI();
+        //    input = '#';
+        //    break;
         }
         //test_controller.printGUI();
 
@@ -123,3 +131,4 @@ int main(int argc, char *argv[]) {
 
     return 0;
 } 
+*/

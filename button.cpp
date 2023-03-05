@@ -26,8 +26,8 @@ std::string Button::getOuterLine() {
 
 std::string Button::getInnerLine() {
     int descriptionLenght = this->description.length();
-    //Ensure that description length is odd for placing element in center
-    if(!(descriptionLenght % 2)) descriptionLenght--;
+    //Ensure that description length is even for placing element in center
+    if((descriptionLenght % 2)) descriptionLenght--;
     // -2 because of outer '#', -descriptionLenght to calculate out the text
     int stringOffset = (this->width - 2 - descriptionLenght) / 2;
     
