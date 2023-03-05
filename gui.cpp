@@ -1,6 +1,7 @@
 #include "gui_controller.hpp"
 #include "gui_element.hpp"
 #include "slider.hpp"
+#include "button_group.hpp"
 
 #include <unistd.h>
 #include <termios.h>
@@ -45,10 +46,14 @@ int main(int argc, char *argv[]) {
     int test_var_2 = 0;
     int test_var_3 = 0;
     int test_var_4 = 0;
-    test_controller.addElement(new Slider(test_var_1, 10, -5));
-    test_controller.addElement(new Slider(test_var_2, 50, 0));
-    test_controller.addElement(new Slider(test_var_3, 100, 0));
-    test_controller.addElement(new Slider(test_var_4, 10, 0));
+    test_controller.addElement(new Slider(test_var_1, 10, -5, "test_1"));
+    test_controller.addElement(new Slider(test_var_2, 50, 0, "test_2"));
+    test_controller.addElement(new Slider(test_var_3, 100, 0, "test_3"));
+    test_controller.addElement(new Slider(test_var_4, 10, 0, "test_4"));
+    bool test_var_5 = false;
+    test_controller.addElement(new ButtonGroup());
+
+    test_controller.addElement(new Slider(test_var_4, 10, 0, "test_5"));
 
     std::thread inputThread(getCharWithoutEnterVoid); 
 
@@ -68,6 +73,8 @@ int main(int argc, char *argv[]) {
             break;
         //Move Large Chunck left -> (10 %)
         case 'A' :
+            test_controller.changeCurrentElementBulk(gui_config::down);
+            input = '#';
             break;
         //Move single number right
         case 'd' :
@@ -76,6 +83,8 @@ int main(int argc, char *argv[]) {
             break;
         //Move Large Chunk right -> (10 %)
         case 'D' :
+            test_controller.changeCurrentElementBulk(gui_config::up);
+            input = '#';
             break;
         //Switch selected Slider Up
         case 'w' :
@@ -87,11 +96,16 @@ int main(int argc, char *argv[]) {
             test_controller.switchElement(gui_config::up);
             input = '#';
             break;
+        case ' ' :
+            test_controller.toggleCurrentElement();
+            input = '#';
+            break;
         //Default Value
         case '#' :
+            test_controller.printGUI();
             break;
         }
-        test_controller.printGUI();
+        //test_controller.printGUI();
 
         //std::this_thread::sleep_for(std::chrono::milliseconds(250));
     }

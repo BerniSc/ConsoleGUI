@@ -9,6 +9,8 @@ namespace gui_config {
 
     constexpr inline int sliderWidth = 50;
 
+    constexpr inline int offsetFromLeft = 8;
+
     enum direction {down = -1, up = 1};
 }
 

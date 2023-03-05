@@ -22,21 +22,15 @@ void GUI_Controller::addElement(GUI_Element* element) {
     static int i = 0;
     std::cout << "Adding Element " << element << std::endl;
     this->elements.emplace_back(element);
-    std::cout << "This Element " << this->element << std::endl;
-    this->element->setSelected(false);
+    if(i++ != 0) this->element->setSelected(false);
     this->element = element;
     this->element->setSelected(true);
-    std::cout << "New Element " << this->element << std::endl;
-    std::cout << "Address in Vector " << this->elements[i++] << std::endl;
 }
 
 void GUI_Controller::printGUI() {
     std::cout << "\033[2J\033[1;1H";
     std::cout << "\n\n";
     for(auto element : elements) {
-        if(element == this->element) {
-            //std::cout << "-->";
-        }
         element->printElement();
         std::cout << "\n";
     }
@@ -46,6 +40,16 @@ void GUI_Controller::printGUI() {
 void GUI_Controller::changeCurrentElement(gui_config::direction direction) {
     std::cout << "Changing " << direction << std::endl;
     element->changeElement(direction);
+}
+
+void GUI_Controller::changeCurrentElementBulk(gui_config::direction direction) {
+    std::cout << "Changing Bulk " << direction << std::endl;
+    element->changeElementBulk(direction);
+}
+
+void GUI_Controller::toggleCurrentElement() {
+    std::cout << "Toggling " << std::endl;
+    element->toggleElement();
 }
 
 void GUI_Controller::switchElement(gui_config::direction direction) {

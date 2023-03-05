@@ -20,6 +20,9 @@ struct GUI_Element {
         
         virtual void printElement() = 0;
         virtual void changeElement(gui_config::direction) = 0;
+        virtual void changeElementBulk(gui_config::direction) = 0;
+
+        virtual void toggleElement() = 0;
 
         void setSelected(bool selected);
         bool getSelected() const;

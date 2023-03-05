@@ -21,8 +21,6 @@ class GUI_Controller {
 
         std::vector<GUI_Element*> elements;
         GUI_Element* element;
-
-        uint currectSelection = 0;
     public:
         GUI_Controller(std::string);
         ~GUI_Controller();
@@ -30,6 +28,7 @@ class GUI_Controller {
         void printGUI();
 
         void changeCurrentElement(gui_config::direction direction);
+        void changeCurrentElementBulk(gui_config::direction direction);
         void toggleCurrentElement();
 
         void addElement(GUI_Element*);

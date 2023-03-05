@@ -1,23 +1,21 @@
-#ifndef SLIDER
-#define SLIDER
+#ifndef BUTTON_GROUP
+#define BUTTON_GROUP
 
 #include "gui_element.hpp"
 #include "gui_config.hpp"
+#include "button.hpp"
 
 #include <string>
+#include <vector>
 
-class Slider : public GUI_Element {
+class ButtonGroup : public GUI_Element {
     private:
-        int &variable;
+        std::vector<Button*> buttons;
+        Button* button;
 
-        const int size;
-        const int min; 
-
-        std::string const description;
-
-        int toggleValue;
+        int currentSelection;
     public:
-        virtual ~Slider();
+        virtual ~ButtonGroup();
 
         virtual void printElement();
 
@@ -25,7 +23,9 @@ class Slider : public GUI_Element {
         virtual void changeElementBulk(gui_config::direction) override;
         virtual void toggleElement() override;
 
-        Slider(int &variable, int const size, int const min, std::string const &&description);
+        virtual void addButton(Button* button);
+
+        ButtonGroup();
 };
 
 #endif
