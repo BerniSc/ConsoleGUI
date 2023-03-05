@@ -2,12 +2,24 @@
 
 ButtonGroup::ButtonGroup() : currentSelection(0) {
     static bool test = false;
-    buttons.emplace_back(new Button(test, "test1"));
-    buttons.emplace_back(new Button(test, "test2"));
-    buttons[0]->setWidth(25);
-    buttons[1]->setWidth(25);
-    button = buttons[0];
-    button->setSelected(true);
+    ////buttons.emplace_back(new Button(test, "test1"));
+    ////buttons.emplace_back(new Button(test, "test2"));
+    ////buttons.emplace_back(new Button(test, "test3"));
+    
+    //buttons[0]->setWidth(25);
+    //buttons[1]->setWidth(25);
+
+    //buttons[0]->setWidth(20);
+    //buttons[1]->setWidth(20);
+    //buttons[2]->setWidth(10);
+    // addButton(new Button(test, "test1"));
+    // addButton(new Button(test, "test2"));
+    // addButton(new Button(test, "test"));
+    // addButton(new Button(test, "test"));
+    //addButton(new Button(test, "Hunhdaslgj"));
+    //addButton(new Button(test, "asfakdfjk"));
+    // button = buttons[0];
+    // button->setSelected(true);
 }
 
 ButtonGroup::~ButtonGroup() {
@@ -54,4 +66,32 @@ void ButtonGroup::toggleElement() {
 
 void ButtonGroup::addButton(Button* button) {
     buttons.emplace_back(button);
+
+    this->button = buttons[0];
+    this->button->setSelected(true);
+
+    int overallTextWidth = 0;
+    for(auto button_iterator : buttons) {
+        overallTextWidth += button_iterator->getDescription().length();
+    }
+
+    //Calculate individual Width of every button
+    std::vector<int> individualWidth;
+    for(auto button_iterator : buttons) {
+        individualWidth.push_back(std::round(gui_config::sliderWidth * float(button_iterator->getDescription().length()) / float(overallTextWidth)));
+    }
+
+    //get sum of all individual Widths for checking if its has Slider length
+    int sum = 0;
+    for(auto i : individualWidth) {
+        sum += i;
+    }
+
+    for(int i = 0; i < buttons.size(); i++) {
+        buttons[i]->setWidth(individualWidth[i]);
+    }
+
+    if(sum != 50) {
+        buttons[buttons.size() - 1]->setWidth(individualWidth[buttons.size() - 1] + (gui_config::sliderWidth - sum));
+    }
 }

@@ -6,6 +6,7 @@
 #include "button.hpp"
 
 #include <string>
+#include <cmath>
 #include <vector>
 
 class ButtonGroup : public GUI_Element {

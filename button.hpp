@@ -5,6 +5,7 @@
 #include "gui_config.hpp"
 
 #include <string>
+#include <cmath>
 #include <iostream>
 
 class Button {

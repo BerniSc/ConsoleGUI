@@ -51,7 +51,12 @@ int main(int argc, char *argv[]) {
     test_controller.addElement(new Slider(test_var_3, 100, 0, "test_3"));
     test_controller.addElement(new Slider(test_var_4, 10, 0, "test_4"));
     bool test_var_5 = false;
-    test_controller.addElement(new ButtonGroup());
+    ButtonGroup *bg = new ButtonGroup();
+
+    bg->addButton(new Button(test_var_5, "Test3"));
+    bg->addButton(new Button(test_var_5, "Test2"));
+    bg->addButton(new Button(test_var_5, "Test"));
+    test_controller.addElement(bg);
 
     test_controller.addElement(new Slider(test_var_4, 10, 0, "test_5"));
 
@@ -104,6 +109,10 @@ int main(int argc, char *argv[]) {
         case '#' :
             test_controller.printGUI();
             break;
+        /*case 'i' :
+            test_controller.printGUI();
+            input = '#';
+            break;*/
         }
         //test_controller.printGUI();
 
