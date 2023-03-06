@@ -13,3 +13,5 @@ The Idea is that for example the GUI is put before the real programm an the para
 
 Elements can be Added like this:
 Creating new Controller and adding Elements per the add-element function. Sliders take in min-Value, Size, description and their Variable, Buttons just their description and their Variable.
+
+An Example for the Implementation of the GUI can be seen in the "main.cpp" Function.
