@@ -1,4 +1,4 @@
-#include "gui.hpp"
+#include "GUI/gui.hpp"
 
 int main() {
     int test_var_1 = 0;
