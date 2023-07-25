@@ -1,25 +1,7 @@
 #include "button_group.hpp"
 
 ButtonGroup::ButtonGroup() : currentSelection(0) {
-    static bool test = false;
-    ////buttons.emplace_back(new Button(test, "test1"));
-    ////buttons.emplace_back(new Button(test, "test2"));
-    ////buttons.emplace_back(new Button(test, "test3"));
-    
-    //buttons[0]->setWidth(25);
-    //buttons[1]->setWidth(25);
 
-    //buttons[0]->setWidth(20);
-    //buttons[1]->setWidth(20);
-    //buttons[2]->setWidth(10);
-    // addButton(new Button(test, "test1"));
-    // addButton(new Button(test, "test2"));
-    // addButton(new Button(test, "test"));
-    // addButton(new Button(test, "test"));
-    //addButton(new Button(test, "Hunhdaslgj"));
-    //addButton(new Button(test, "asfakdfjk"));
-    // button = buttons[0];
-    // button->setSelected(true);
 }
 
 ButtonGroup::~ButtonGroup() {
@@ -42,7 +24,7 @@ void ButtonGroup::printElement() {
         innerLine += button->getInnerLine();
     }
     std::cout <<  outerLine << "\n" << \
-                  innerLine << "\n" << \
+                  innerLine << "\t\t" << "currently: " << (buttons[currentSelection]->getVar() ? "true" : "false") <<"\n" << \
                   outerLine;
 }
 
@@ -87,7 +69,7 @@ void ButtonGroup::addButton(Button* button) {
         sum += i;
     }
 
-    for(int i = 0; i < buttons.size(); i++) {
+    for(unsigned long int i = 0; i < buttons.size(); i++) {
         buttons[i]->setWidth(individualWidth[i]);
     }
 

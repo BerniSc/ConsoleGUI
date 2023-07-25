@@ -7,6 +7,7 @@ int main() {
     int test_var_4 = 0;
 
     bool test_var_5 = false;
+    bool test_var_6 = false;
     
     GUI::controller->addElement(new Slider(test_var_1, 10, -5, "test_1"));
     GUI::controller->addElement(new Slider(test_var_2, 50, 0, "test_2"));
@@ -15,7 +16,7 @@ int main() {
     
     ButtonGroup *bg = new ButtonGroup();
     bg->addButton(new Button(test_var_5, "Test3"));
-    bg->addButton(new Button(test_var_5, "Test2"));
+    bg->addButton(new Button(test_var_6, "Test2"));
     bg->addButton(new Button(test_var_5, "Test1"));
     bg->addButton(new Button(test_var_5, "Sizing Test 0"));
     GUI::controller->addElement(bg);

@@ -14,7 +14,7 @@ class Button {
 
         int width;
 
-        std::string const description;
+        std::string description;
 
         bool selected;
     public:
@@ -29,6 +29,8 @@ class Button {
         void setSelected(bool selected);
 
         virtual void toggleElement();
+
+        bool getVar() const;
 
         Button(bool &variable, std::string const && description);
 };

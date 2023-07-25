@@ -5,7 +5,7 @@
 
 namespace gui_config {
     constexpr inline bool debugMode = true;
-    constexpr inline std::chrono::milliseconds tick(250);
+    constexpr inline std::chrono::milliseconds tick(200);   // 250 ms
 
     constexpr inline int sliderWidth = 50;
 

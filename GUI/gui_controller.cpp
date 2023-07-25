@@ -53,7 +53,7 @@ void GUI_Controller::toggleCurrentElement() {
 }
 
 void GUI_Controller::switchElement(gui_config::direction direction) {
-    if((this->element->getID() + direction) >= 0 && (this->element->getID() + direction) <= (this->elements.size() - 1)) {
+    if((this->element->getID() + direction) >= 0 && (this->element->getID() + direction) <= (int) (this->elements.size() - 1)) {
         this->element->setSelected(false);
         this->element = this->elements.at(this->element->getID() + static_cast<int>(direction));
         this->element->setSelected(true);

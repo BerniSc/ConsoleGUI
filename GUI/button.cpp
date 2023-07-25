@@ -48,6 +48,11 @@ std::string Button::getDescription() {
     return this->description;
 }
 
+
+bool Button::getVar() const {
+    return this->variable;
+}
+
 void Button::toggleElement() {   
     variable = !variable;
 }
