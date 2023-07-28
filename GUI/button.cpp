@@ -1,6 +1,6 @@
 #include "button.hpp"
 
-Button::Button(bool &variable, std::string const && description) : variable(variable), description(description), selected(false) {
+Button::Button(bool &variable, std::string const & description) : TextElement(description), variable(variable), description(description), selected(false) {
     std::cout << "Created Button " << description << std::endl;
 }
 
@@ -16,7 +16,7 @@ void Button::setSelected(bool selected) {
     this->selected = selected;
 }
 
-std::string Button::getOuterLine() {
+std::string Button::getOuterLine() const {
     std::string line = "";
     for(int i = 0; i < width; i++) {
         line += selected ? "%" : "#";
@@ -24,7 +24,7 @@ std::string Button::getOuterLine() {
     return line;
 }
 
-std::string Button::getInnerLine() {
+std::string Button::getInnerLine() const {
     int descriptionLenght = this->description.length();
     //Ensure that description length is even for placing element in center
     if((descriptionLenght % 2)) descriptionLenght--;
@@ -44,7 +44,7 @@ std::string Button::getInnerLine() {
     return line;
 }
 
-std::string Button::getDescription() {
+std::string Button::getDescription() const {
     return this->description;
 }
 

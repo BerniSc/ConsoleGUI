@@ -53,9 +53,12 @@ void GUI_Controller::toggleCurrentElement() {
 }
 
 void GUI_Controller::switchElement(gui_config::direction direction) {
+    std::cout << "1:" << ((this->element->getID() + direction) >= 0) << "   2:" << ((this->element->getID() + direction) <= (int) (this->elements.size() - 1)) << std::endl;
     if((this->element->getID() + direction) >= 0 && (this->element->getID() + direction) <= (int) (this->elements.size() - 1)) {
+        std::cout << "ID:" << this->element->getID() << std::endl;
         this->element->setSelected(false);
-        this->element = this->elements.at(this->element->getID() + static_cast<int>(direction));
+        std::cout <<  elements.size() << "  " << (this->element->getID() + static_cast<int>(direction)) << std::endl;
+        this->element = this->elements.at((int) (this->element->getID() + static_cast<int>(direction)));
         this->element->setSelected(true);
     }
 }

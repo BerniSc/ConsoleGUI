@@ -79,6 +79,7 @@ struct GUI {
                 break;
             //Switch selected Slider Up
             case 'w' :
+            // Down means going up with reagard to IDs
                 controller->switchElement(gui_config::down);
                 input = '#';
                 break;
@@ -93,7 +94,11 @@ struct GUI {
                 break;
             //Default Value
             case '#' :
+                //controller->printGUI();
+                break;
+            case 'p' :
                 controller->printGUI();
+                input = '#';
                 break;
             /*case 'i' :
                 test_controller.printGUI();

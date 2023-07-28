@@ -15,11 +15,12 @@ int main() {
     GUI::controller->addElement(new Slider(test_var_4, 10, 0, "test_4"));
     
     ButtonGroup *bg = new ButtonGroup();
-    bg->addButton(new Button(test_var_5, "Test3"));
-    bg->addButton(new Button(test_var_6, "Test2"));
-    bg->addButton(new Button(test_var_5, "Test1"));
-    bg->addButton(new Button(test_var_5, "Sizing Test 0"));
-    GUI::controller->addElement(bg);
+    //bg->addButton(new Button(test_var_5, "Test3"));
+    //bg->addButton(new Button(test_var_6, "Test2"));
+    //bg->addButton(new Button(test_var_5, "Test1"));
+    //bg->addButton(new Button(test_var_5, "Sizing Test 0"));
+    //GUI::controller->addElement(bg);
+    //delete bg;
 
     GUI::controller->addElement(new Slider(test_var_4, 10, 0, "test_5"));
 
