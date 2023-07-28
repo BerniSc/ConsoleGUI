@@ -7,7 +7,7 @@
 
 #include <thread>
 
-#include "gui_element.hpp"
+#include "Elements/gui_element.hpp"
 #include "gui_config.hpp"
 
 class GUI_Element;

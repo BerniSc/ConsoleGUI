@@ -2,12 +2,14 @@
 #define GUI_HPP
 
 #include "gui_controller.hpp"
-#include "button_group.hpp"
-#include "slider.hpp"
+#include "Elements/button_group.hpp"
+#include "Elements/slider.hpp"
 
 #include <unistd.h>
 #include <termios.h>
 #include <mutex>
+
+#include <string>
 
 static std::mutex inputMutex;
 static char input = '#';
@@ -16,6 +18,7 @@ static std::mutex stopMutex;
 static bool stop = false;
 
 //For Solution with thread -> needs while Loop 
+void getCharWithoutEnterVoid();
 void getCharWithoutEnterVoid() {
     while(!stop) {
         char buffer = 0;
@@ -94,12 +97,12 @@ struct GUI {
                 break;
             //Default Value
             case '#' :
-                //controller->printGUI();
-                break;
-            case 'p' :
                 controller->printGUI();
-                input = '#';
                 break;
+//            case 'p' :
+//                controller->printGUI();
+//                input = '#';
+//                break;
             /*case 'i' :
                 test_controller.printGUI();
                 input = '#';
@@ -115,7 +118,11 @@ struct GUI {
         return;
     }
 
-    
+    template<typename ptr, typename... Args>
+    static void addElements(std::string, ptr*, Args... arguments);
+
+    template<typename ptr>
+    bool evaluate(std::string, ptr*);
 };
 
 std::unique_ptr<GUI_Controller> GUI::controller = std::unique_ptr<GUI_Controller>(new GUI_Controller("GUI Controller"));

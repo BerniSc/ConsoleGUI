@@ -2,13 +2,13 @@
 #define TEXT_ELEMENT_HPP
 
 #include "gui_element.hpp"
-#include "gui_config.hpp"
+#include "../gui_config.hpp"
 
 #include <string>
 
-class TextElement {
+class TextElement : public GUI_Element {
     private:
-        std::string text;
+        std::string &text;
         
         char frameSymbol;
 

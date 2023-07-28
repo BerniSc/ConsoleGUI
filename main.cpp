@@ -24,8 +24,10 @@ int main() {
 
     GUI::controller->addElement(new Slider(test_var_4, 10, 0, "test_5"));
 
-    std::thread GUI_thread(GUI::startGUI);
-    GUI_thread.join();
+    //std::thread GUI_thread(GUI::startGUI);
+    //GUI_thread.join();
+
+    GUI::startGUI();
 
     std::cout << "STARTING REAL PROGRAMM NOWWW with " << test_var_1 << "|" << test_var_2 << "|" << test_var_3 << "|" << test_var_4 << "|" << test_var_5 << std::endl;
 

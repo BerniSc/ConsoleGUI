@@ -3,13 +3,13 @@
 
 #include "gui_element.hpp"
 #include "text_element.hpp"
-#include "gui_config.hpp"
+#include "../gui_config.hpp"
 
 #include <string>
 #include <cmath>
 #include <iostream>
 
-class Button :  public TextElement {
+class Button : public TextElement {
     private:
         bool &variable;
 

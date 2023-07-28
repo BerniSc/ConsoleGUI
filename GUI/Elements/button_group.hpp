@@ -2,7 +2,7 @@
 #define BUTTON_GROUP
 
 #include "gui_element.hpp"
-#include "gui_config.hpp"
+#include "../gui_config.hpp"
 #include "button.hpp"
 
 #include <string>

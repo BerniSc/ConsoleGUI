@@ -4,7 +4,7 @@
 #include <iostream>
 #include <iomanip>
 
-#include "gui_config.hpp"
+#include "../gui_config.hpp"
 
 struct GUI_Element {
     private:

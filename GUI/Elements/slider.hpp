@@ -2,7 +2,7 @@
 #define SLIDER
 
 #include "gui_element.hpp"
-#include "gui_config.hpp"
+#include "../gui_config.hpp"
 
 #include <string>
 
