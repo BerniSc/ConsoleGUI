@@ -56,3 +56,27 @@ bool Button::getVar() const {
 void Button::toggleElement() {   
     variable = !variable;
 }
+
+void Button::printElement() {
+    std::string outerLine = std::string(gui_config::offsetFromLeft + 2, ' ');
+    std::string innerLine = "";
+    if(this->getSelected()) {
+        innerLine = "-->";
+        innerLine += std::string(gui_config::offsetFromLeft - 1, ' ');
+    } else {
+        innerLine = std::string(gui_config::offsetFromLeft + 2, ' ');
+    }
+    outerLine += getOuterLine(); 
+    innerLine += getInnerLine();
+    std::cout <<  outerLine << "\n" << \
+                  innerLine << "\t\t" << "currently: " << (getVar() ? "true" : "false") <<"\n" << \
+                  outerLine;
+}
+
+void Button::changeElement(gui_config::direction direction) {
+
+}
+
+void Button::changeElementBulk(gui_config::direction direction) {
+
+}

@@ -29,13 +29,13 @@ class Button : public TextElement {
         void setWidth(int width);
         void setSelected(bool selected);
 
-        virtual void toggleElement();
-
         bool getVar() const;
 
-        virtual void printElement() {};
-        virtual void changeElement(gui_config::direction) {};
-        virtual void changeElementBulk(gui_config::direction) {};
+        virtual void printElement();
+       
+        virtual void changeElement(gui_config::direction) override;
+        virtual void changeElementBulk(gui_config::direction) override;
+        virtual void toggleElement() override;
 
         Button(bool &variable, std::string const & description);
 };

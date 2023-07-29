@@ -11,6 +11,8 @@ namespace gui_config {
 
     constexpr inline int offsetFromLeft = 8;
 
+    constexpr inline char inputSeperation = '#';
+
     enum direction {down = -1, up = 1};
 }
 
