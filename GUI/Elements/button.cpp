@@ -1,7 +1,8 @@
 #include "button.hpp"
 
-Button::Button(bool &variable, std::string const & description) : TextElement(description), variable(variable), description(description), selected(false) {
+Button::Button(bool &variable, std::string const description) : TextElement(description), variable(variable), description(description), selected(false) {
     std::cout << "Created Button " << description << std::endl;
+    this->setWidth(gui_config::sliderWidth);
 }
 
 Button::~Button() {
@@ -50,7 +51,7 @@ std::string Button::getDescription() const {
 
 
 bool Button::getVar() const {
-    return this->variable;
+    return variable;
 }
 
 void Button::toggleElement() {   

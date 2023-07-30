@@ -1,6 +1,6 @@
 #include "slider.hpp"
 
-Slider::Slider(int &variable, int const size, int const min, std::string const && description) : variable(variable), size(size), min(min), description(description) {
+Slider::Slider(int &variable, int const size, int const min, std::string const & description) : variable(variable), size(size), min(min), description(description) {
     variable = min;
     toggleValue = min;
     std::cout << "Created Slider " << description << std::endl;

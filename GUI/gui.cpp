@@ -1,5 +1,14 @@
 #include "gui.hpp"
 
+std::unique_ptr<GUI_Controller> GUI::controller = std::unique_ptr<GUI_Controller>(new GUI_Controller("GUI Controller"));
+std::vector<ButtonGroup*> GUI::buttonGroups = {};
+
+static std::mutex inputMutex;
+static char input = '#';
+
+static std::mutex stopMutex;
+static bool stop = false;
+
 void getCharWithoutEnterVoid() {
     while(!stop) {
         char buffer = 0;
@@ -25,7 +34,7 @@ void getCharWithoutEnterVoid() {
     }
 }
 
-std::vector<std::string>& seperateString(std::string toSeperate, const char *seperator) {
+std::vector<std::string> seperateString(std::string toSeperate, const char *seperator) {
     std::vector<std::string> result;
 
     char* dataAsPointer = &toSeperate[0];
@@ -39,34 +48,6 @@ std::vector<std::string>& seperateString(std::string toSeperate, const char *sep
     
     return result;
 }
-
-template<typename ptr, typename... Args>
-void GUI::addElements(std::string instruction, ptr* connectedVar, Args... arguments) {
-    evaluate(instruction connectedVar);
-
-    // Recursivly calls function again if enough elements are still in Parameter-list
-    if constexpr(sizeof...(arguments) > 1) {
-        addElements(arguments...);
-    }
-}
-
-template<typename ptr>
-bool GUI::evaluate(std::string instruction, ptr* connectedVar) {
-    std::vector<std::string> seperatedInput = seperateString(instruction, gui_config::inputSeperation);
-
-    // Has to have at least one Argument (Description of what is to be added)
-    if(seperatedInput.size() < 1) throw InputParsingError("Wrong Number of Input Arguments in Parsing the Input!");
-    // Allows currently for single Inputs like 's' and double Inputs like 'bg'
-    if(seperatedInput[0].size() != 1 && seperatedInput[0].size() != 2) throw InputParsingError("Wrong size of first input Argument!")
-
-    switch(seperatedInput[0]) {
-        // Case Slider -> Needs to have 4 different Parts -> 's' + 'length' + 'min' + 'text'
-        case "s":
-            controller->addElement(new Slider(connectedVar, int(seperatedInput[2]), int(seperatedInput[3]), seperatedInput[1]));
-            break;
-        case 
-    }
-};
 
 void GUI::startGUI() {
     std::thread inputThread(getCharWithoutEnterVoid); 

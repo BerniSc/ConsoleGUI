@@ -25,7 +25,7 @@ class Slider : public GUI_Element {
         virtual void changeElementBulk(gui_config::direction) override;
         virtual void toggleElement() override;
 
-        Slider(int &variable, int const size, int const min, std::string const &&description);
+        Slider(int &variable, int const size, int const min, std::string const &description);
 };
 
 #endif
