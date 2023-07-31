@@ -8,7 +8,7 @@
 
 class TextElement : public GUI_Element {
     private:
-        std::string &text;
+        std::string *text;
         
         char frameSymbol;
 
@@ -24,7 +24,7 @@ class TextElement : public GUI_Element {
 
         void setWidth(int width);
 
-        TextElement(std::string text, char frameSymbol = '#');
+        TextElement(std::string *text, char frameSymbol = '#');
 };
 
 #endif

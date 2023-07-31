@@ -1,7 +1,7 @@
 #include "button_group.hpp"
 
 ButtonGroup::ButtonGroup() : currentSelection(0) {
-
+    std::cout << "Created ButtonGroup  With ID " << this->getID() << std::endl;
 }
 
 ButtonGroup::~ButtonGroup() {
@@ -46,7 +46,11 @@ void ButtonGroup::toggleElement() {
     button->toggleElement();
 }
 
-void ButtonGroup::addButton(Button* button) {
+void ButtonGroup::addButton(bool *variable, std::string const description) {
+    instance_id_counter--;
+    Button *button = new Button(variable, description);
+
+
     buttons.emplace_back(button);
 
     this->button = buttons[0];
@@ -60,7 +64,7 @@ void ButtonGroup::addButton(Button* button) {
     //Calculate individual Width of every button
     std::vector<int> individualWidth;
     for(auto button_iterator : buttons) {
-        individualWidth.push_back(std::round(gui_config::sliderWidth * float(button_iterator->getDescription().length()) / float(overallTextWidth)));
+        individualWidth.push_back(std::round(gui_config::sliderWidth * float(button_iterator->getDescription().length() + 1) / float(overallTextWidth)));
     }
 
     //get sum of all individual Widths for checking if its has Slider length
@@ -73,7 +77,7 @@ void ButtonGroup::addButton(Button* button) {
         buttons[i]->setWidth(individualWidth[i]);
     }
 
-    if(sum != 50) {
-        buttons[buttons.size() - 1]->setWidth(individualWidth[buttons.size() - 1] + (gui_config::sliderWidth - sum));
+    if(sum != gui_config::sliderWidth) {
+        buttons[buttons.size() - 1]->setWidth(individualWidth[buttons.size() - 1] + (gui_config::sliderWidth - sum)+1);
     }
 }

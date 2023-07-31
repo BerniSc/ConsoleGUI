@@ -7,7 +7,7 @@
 #include "../gui_config.hpp"
 
 struct GUI_Element {
-    private:
+    protected:
         static unsigned char instance_id_counter;
         const int instance_id;
         

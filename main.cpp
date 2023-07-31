@@ -26,16 +26,22 @@ int main() {
 
     //std::thread GUI_thread(GUI::startGUI);
     //GUI_thread.join();
+    //GUI::controller->addElement(new Slider(&test_var_1, 10,0,"hu"));
 
-    GUI::controller->addElement(new Button(test_var_5, std::string("Hi")));
-    //ButtonGroup* bg = new ButtonGroup();
-    //bg->addButton(new Button(test_var_5,"Rolf"));
-    //bg->addButton(new Button(test_var_6,"Ralf"));
+    GUI::controller->addElement(new Button(&test_var_5, std::string("Hi")));
+    ButtonGroup* bg = new ButtonGroup();
+    //ButtonGroup bg;
+    bg->addButton(&test_var_5,"Rolaf");
+    GUI::controller->addElement(bg);
+    bg->addButton(&test_var_6,"Railf");
+    //bg->addButton(new Button(&test_var_5, "Budolf"));
     //GUI::controller->addElement(bg);
 
-    std::string s = "hi";
+    GUI::controller->addElement(new Slider(&test_var_1, 10,0,"hu"));
 
-    GUI::addElements("s#Hi#10#0", &test_var_1, "s#Hi2#20#-10", &test_var_2);
+    //std::string s = "hi";
+
+    GUI::addElements("s#Hi#10#0", &test_var_1, "s#Hi2#20#-10", &test_var_2, "b#JUHUU", &test_var_6);
 
     GUI::startGUI();
 

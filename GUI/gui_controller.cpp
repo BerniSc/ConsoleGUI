@@ -22,6 +22,7 @@ void GUI_Controller::addElement(GUI_Element* element) {
     static int i = 0;
     std::cout << "Adding Element " << element << std::endl;
     this->elements.emplace_back(element);
+    // If Two or more Elements are in vector deactivate previous and activate current
     if(i++ != 0) this->element->setSelected(false);
     this->element = element;
     this->element->setSelected(true);
@@ -54,11 +55,14 @@ void GUI_Controller::toggleCurrentElement() {
 
 void GUI_Controller::switchElement(gui_config::direction direction) {
     std::cout << "1:" << ((this->element->getID() + direction) >= 0) << "   2:" << ((this->element->getID() + direction) <= (int) (this->elements.size() - 1)) << std::endl;
+    std::cout << "Elements:" << this->elements.size() << " ID: " << this->element->getID() << std::endl; 
+    std::cout << "Lower:" << element->getID() + direction << "  higher: " << (int) (elements.size()-1) << std::endl;
     if((this->element->getID() + direction) >= 0 && (this->element->getID() + direction) <= (int) (this->elements.size() - 1)) {
+        std::cout << "officially switching now..." << std::endl;
         std::cout << "ID:" << this->element->getID() << std::endl;
         this->element->setSelected(false);
         std::cout <<  elements.size() << "  " << (this->element->getID() + static_cast<int>(direction)) << std::endl;
-        this->element = this->elements.at((int) (this->element->getID() + static_cast<int>(direction)));
+        this->element = this->elements[this->element->getID() + static_cast<int>(direction)];
         this->element->setSelected(true);
     }
 }

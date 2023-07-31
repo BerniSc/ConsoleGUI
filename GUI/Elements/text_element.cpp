@@ -1,6 +1,6 @@
 #include "text_element.hpp"
 
-TextElement::TextElement(std::string text, char frameSymbol) : text(text), frameSymbol(frameSymbol) {
+TextElement::TextElement(std::string *text, char frameSymbol) : text(text), frameSymbol(frameSymbol) {
 
 }
 
@@ -13,7 +13,7 @@ std::string TextElement::getOuterLine() const {
 }
 
 std::string TextElement::getInnerLine() const {
-    int descriptionLenght = this->text.length();
+    int descriptionLenght = (*(this->text)).length();
     //Ensure that description length is even for placing element in center
     if((descriptionLenght % 2)) descriptionLenght--;
     // -2 because of outer '#', -descriptionLenght to calculate out the text
@@ -24,7 +24,7 @@ std::string TextElement::getInnerLine() const {
     for(int i = 0; i < stringOffset; i++) {
         line += " ";
     }
-    line += text;
+    line += *text;
     for(int i = 0; i < stringOffset; i++) {
         line += " ";
     }

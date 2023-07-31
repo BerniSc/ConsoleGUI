@@ -11,7 +11,7 @@
 
 class Button : public TextElement {
     private:
-        bool &variable;
+        bool *variable;
 
         int width;
 
@@ -37,7 +37,7 @@ class Button : public TextElement {
         virtual void changeElementBulk(gui_config::direction) override;
         virtual void toggleElement() override;
 
-        Button(bool &variable, std::string const description);
+        Button(bool *variable, std::string const description);
 };
 
 #endif

@@ -12,6 +12,8 @@
 
 #include <string>
 
+#include <type_traits>
+
 #include <vector>
 #include <cstring>
 
@@ -31,7 +33,7 @@ class GUI {
         // Definition of Template Function has to be in Header File
         //****
         template<typename ptr>
-        static bool evaluate(std::string instruction, ptr connectedVar) {
+        static bool evaluate(std::string instruction, ptr* connectedVar) {
             std::vector<std::string> seperatedInput = seperateString(instruction, gui_config::inputSeperation);
 
             // Has to have at least one Argument (Description of what is to be added)
@@ -41,27 +43,32 @@ class GUI {
 
             // Case Slider -> Needs to have 4 different Parts -> 's' + 'length' + 'min' + 'text'
             if(seperatedInput[0] == "s") {
-                //Currently dereferencing as reference were used instead of Sliders -> TODO Change
-                controller->addElement(new Slider(*connectedVar, std::stoi(seperatedInput[2]), std::stoi(seperatedInput[3]), seperatedInput[1])); 
+                // Only Accepts Parameters of type int -> Otherwise C++ tries to compile with add Slider(...*bool) -> Error
+                if constexpr(std::is_same_v<ptr, int>) {
+                    //Currently dereferencing as reference were used instead of Sliders -> TODO Change
+                    controller->addElement(new Slider(connectedVar, std::stoi(seperatedInput[2]), std::stoi(seperatedInput[3]), seperatedInput[1])); 
+                }
             }
 
             /*** Currently Not yet Working ***/
-            /*
+            
             // Case Button -> Needs to have 2 different Parts -> 'b' + 'Text'
             if(seperatedInput[0] == "b") {
-                controller->addElement(new Button(*connectedVar, seperatedInput[1])); 
+                if constexpr(std::is_same_v<ptr, bool>) {
+                    controller->addElement(new Button(connectedVar, seperatedInput[1])); 
+                }
             }
 
             // Case Button-Group -> Needs to have 3 different Parts -> 'bg' + 'id' + 'text'
-            if(seperatedInput[0] == "bg") {
+            /*if(seperatedInput[0] == "bg") {
                 // Only create new Button Group if necessary -> Maybe hash or Map to see if "Index" already created -> Currently test 
                 if(buttonGroups.size() == 0) {
                     buttonGroups.emplace_back(new ButtonGroup());
                     controller->addElement(buttonGroups[0]);
                 }
                 buttonGroups[0]->addButton(new Button(*connectedVar, seperatedInput[1]));
-            }
-            */
+            }*/
+            
         };
     public:
     //TODO MOVE TO PRIVATE

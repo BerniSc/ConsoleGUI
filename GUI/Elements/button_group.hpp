@@ -24,7 +24,7 @@ class ButtonGroup : public GUI_Element {
         virtual void changeElementBulk(gui_config::direction) override;
         virtual void toggleElement() override;
 
-        virtual void addButton(Button* button);
+        virtual void addButton(bool *variable, std::string const description);
 
         ButtonGroup();
 };
