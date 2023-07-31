@@ -97,8 +97,12 @@ void GUI::startGUI() {
             input = '#';
             break;
         //Default Value
-        case '#' :
+        case 'p' :
             controller->printGUI();
+            input = '#';
+            break;
+        case '#' :
+            //controller->printGUI();
             break;
         }
     }
