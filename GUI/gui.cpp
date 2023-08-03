@@ -49,6 +49,9 @@ std::vector<std::string> seperateString(std::string toSeperate, const char *sepe
     return result;
 }
 
+// Function for starting the GUI
+// Blocks calling thread until it is terminated
+// Safe to be called multiple Times
 void GUI::startGUI() {
     std::thread inputThread(getCharWithoutEnterVoid); 
 
@@ -102,10 +105,11 @@ void GUI::startGUI() {
             input = '#';
             break;
         case '#' :
-            //controller->printGUI();
+            controller->printGUI();
             break;
         }
     }
     inputThread.join();
+    stop = false;
     return;
 }

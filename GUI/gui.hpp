@@ -25,7 +25,7 @@ std::vector<std::string> seperateString(std::string toSeperate, const char *sepe
 
 class GUI {
     private:
-//        static std::unique_ptr<GUI_Controller> controller; 
+        static std::unique_ptr<GUI_Controller> controller; 
 
         static std::vector<ButtonGroup*> buttonGroups;
 
@@ -60,19 +60,30 @@ class GUI {
             }
 
             // Case Button-Group -> Needs to have 3 different Parts -> 'bg' + 'id' + 'text'
-            /*if(seperatedInput[0] == "bg") {
-                // Only create new Button Group if necessary -> Maybe hash or Map to see if "Index" already created -> Currently test 
-                if(buttonGroups.size() == 0) {
-                    buttonGroups.emplace_back(new ButtonGroup());
-                    controller->addElement(buttonGroups[0]);
+            if(seperatedInput[0] == "bg") {
+                // Only create new Button Group if necessary -> Maybe hash or Map to see if "Index" already
+                // Getting int from second Input-Parameter -> stoi throws Error if argument was not parsable 
+                int index = stoi(seperatedInput[1]);
+                static int prevMax = 0;
+                std::cout << index << std::endl;
+                // Compiletime-evaluation of Template Parameter -> Does not try to call wrong functions
+                if constexpr(std::is_same_v<ptr, bool>) {
+                    // Return an Error if Index is Negativ or over the currently possible amount of creatable/created Buttongroups
+                    // Must also check wheter index is at 1 because of shorthand evaluation -> calling size() if buttonGroups has no elements results in segfault
+                    if(index < 0 || (index - 1 > prevMax)) throw InputParsingError("Wrong Index-Number in entering Button-Group ID!");
+                    // If Index is just one Element "Out of Bounds", create new Buttongroup and Add it
+                    if(index - 1 == prevMax) {
+                        std::cout << index << "     " << buttonGroups.size() << std::endl; 
+                        buttonGroups.emplace_back(new ButtonGroup());
+                        controller->addElement(buttonGroups[(prevMax = index) - 1]);
+                    }
+                    buttonGroups[index - 1]->addButton(connectedVar, seperatedInput[2]);
                 }
-                buttonGroups[0]->addButton(new Button(*connectedVar, seperatedInput[1]));
-            }*/
+            }
             
         };
     public:
     //TODO MOVE TO PRIVATE
-           static std::unique_ptr<GUI_Controller> controller; 
         //****
         // Definition of Template Function has to be in Header File
         //****
