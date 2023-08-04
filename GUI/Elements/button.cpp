@@ -76,7 +76,8 @@ void Button::printElement() {
 }
 
 void Button::changeElement(gui_config::direction direction) {
-
+       // TODO -> Find Out why setSelected does not seem to work itsself on pure Buttons and therefore this is required
+       this->selected = getSelected();
 }
 
 void Button::changeElementBulk(gui_config::direction direction) {

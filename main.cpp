@@ -17,7 +17,7 @@ int main() {
                      "b#JUHUU", &test_var_6, \
                      "bg#1#Hi", &test_var_5, \
                      "bg#1#MOIN", &test_var_6, \
-                     "bg#1#MOINsen", &test_var_6, \
+                     "bg#1#MOINsena", &test_var_6, \
                      "s#SIZETEST#50#0", &test_var_4);
 
     GUI::startGUI();

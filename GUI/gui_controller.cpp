@@ -58,8 +58,6 @@ void GUI_Controller::switchElement(gui_config::direction direction) {
     std::cout << "Elements:" << this->elements.size() << " ID: " << this->element->getID() << std::endl; 
     std::cout << "Lower:" << element->getID() + direction << "  higher: " << (int) (elements.size()-1) << std::endl;
     if((this->element->getID() + direction) >= 0 && (this->element->getID() + direction) <= (int) (this->elements.size() - 1)) {
-        std::cout << "officially switching now..." << std::endl;
-        std::cout << "ID:" << this->element->getID() << std::endl;
         this->element->setSelected(false);
         std::cout <<  elements.size() << "  " << (this->element->getID() + static_cast<int>(direction)) << std::endl;
         this->element = this->elements[this->element->getID() + static_cast<int>(direction)];
