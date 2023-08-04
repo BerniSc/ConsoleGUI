@@ -22,22 +22,26 @@ int main() {
     GUI::startGUI();
 
     //getchar();
-    std::cout << "\033[2J\033[1;1H" << std::endl;
-    std::cout << "\033[2J\033[1;1H";
-    std::cout << "\033[2J\033[1;1H";
+    //std::cout << "\033[2J\033[1;1H" << std::endl;
+    //std::cout << "\033[2J\033[1;1H";
+    //std::cout << "\033[2J\033[1;1H";
 
     using namespace std::chrono_literals;
 
-    std::this_thread::sleep_for(1000ms);
-    std::cout << "\033[2J\033[1;1H";
-    std::this_thread::sleep_for(5000ms);
-    std::cout << "hii" << std::endl;
+    //std::this_thread::sleep_for(1000ms);
+    //std::cout << "\033[2J\033[1;1H";
+    //std::this_thread::sleep_for(5000ms);
+    //std::cout << "hii" << std::endl;
 
     //GUI::startGUI();
     while(true) {
+        static int i = 0;
         std::this_thread::sleep_for(1000ms);
         std::cout << "HIII" << std::endl;
+        if(++i == 10) break;
     }
+
+    GUI::startGUI();
 
     std::cout << "STARTING REAL PROGRAMM NOWWW with " << test_var_1 << "|" << test_var_2 << "|" << test_var_3 << "|" << test_var_4 << "|" << test_var_5 << std::endl;
 

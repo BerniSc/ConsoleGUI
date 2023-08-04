@@ -111,5 +111,7 @@ void GUI::startGUI() {
     }
     inputThread.join();
     stop = false;
+    std::cout << "\033[2J\033[1;1H" << std::endl;
+    input = '#';
     return;
 }
