@@ -64,7 +64,7 @@ void ButtonGroup::addButton(bool *variable, std::string const description) {
     //Calculate individual Width of every button
     std::vector<int> individualWidth;
     for(auto button_iterator : buttons) {
-        individualWidth.push_back(std::round(gui_config::sliderWidth * float(button_iterator->getDescription().length() + 1) / float(overallTextWidth)));
+        individualWidth.push_back(std::round((gui_config::sliderWidth) * float(button_iterator->getDescription().length() + 1) / float(overallTextWidth)));
     }
 
     //get sum of all individual Widths for checking if its has Slider length
@@ -77,7 +77,7 @@ void ButtonGroup::addButton(bool *variable, std::string const description) {
         buttons[i]->setWidth(individualWidth[i]);
     }
 
-    if(sum != gui_config::sliderWidth) {
-        buttons[buttons.size() - 1]->setWidth(individualWidth[buttons.size() - 1] + (gui_config::sliderWidth - sum)+1);
+    if(sum != gui_config::sliderWidth - 1) {
+        buttons[buttons.size() - 1]->setWidth(individualWidth[buttons.size() - 1] + (gui_config::sliderWidth - sum));
     }
 }

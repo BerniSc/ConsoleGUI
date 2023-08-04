@@ -111,7 +111,9 @@ void GUI::startGUI() {
     }
     inputThread.join();
     stop = false;
+    // Clear output and Outputbuffer
     std::cout << "\033[2J\033[1;1H" << std::endl;
+    // Reset Last input if Menu was quit by pressing q two times
     input = '#';
     return;
 }

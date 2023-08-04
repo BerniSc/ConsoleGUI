@@ -28,9 +28,9 @@ std::string Button::getOuterLine() const {
 std::string Button::getInnerLine() const {
     int descriptionLenght = this->description.length();
     //Ensure that description length is even for placing element in center
-    if((descriptionLenght % 2)) descriptionLenght--;
-    // -2 because of outer '#', -descriptionLenght to calculate out the text
-    int stringOffset = (this->width - 2 - descriptionLenght) / 2;
+    if((descriptionLenght % 2)) descriptionLenght++;
+    // -1 because of outer '#', -descriptionLenght to calculate out the text
+    int stringOffset = (this->width - 1 - descriptionLenght) / 2;
     
     std::string line = "";
     line += selected ? "%" : "#";
@@ -38,9 +38,10 @@ std::string Button::getInnerLine() const {
         line += " ";
     }
     line += description;
-    for(int i = 0; i < stringOffset; i++) {
-        line += " ";
-    }
+    //for(int i = 0; i < stringOffset; i++) {
+    //    line += " ";
+    //}
+    while(line.size() + 1 < this->width) line += " ";
     line += selected ? "%" : "#";
     return line;
 }
