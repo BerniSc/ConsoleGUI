@@ -32,8 +32,10 @@ class GUI {
         //****
         // Definition of Template Function has to be in Header File
         //****
+        // TODO -> USE RETURNVALUE TO DETERMINE SUCCESS
         template<typename ptr>
         static bool evaluate(std::string instruction, ptr* connectedVar) {
+            // Seperating the Input-Instruction on configurated Seperation-Element, Stores Results in string Vector
             std::vector<std::string> seperatedInput = seperateString(instruction, gui_config::inputSeperation);
 
             // Has to have at least one Argument (Description of what is to be added)
@@ -46,7 +48,9 @@ class GUI {
                 // Only Accepts Parameters of type int -> Otherwise C++ tries to compile with add Slider(...*bool) -> Error
                 if constexpr(std::is_same_v<ptr, int>) {
                     //Currently dereferencing as reference were used instead of Sliders -> TODO Change
-                    controller->addElement(new Slider(connectedVar, std::stoi(seperatedInput[2]), std::stoi(seperatedInput[3]), seperatedInput[1])); 
+                    controller->addElement(new Slider(connectedVar, std::stoi(seperatedInput[2]), std::stoi(seperatedInput[3]), seperatedInput[1]));
+                    // Evaluating was Successful -> Therefore return True
+                    return true; 
                 }
             }
 
@@ -56,6 +60,8 @@ class GUI {
             if(seperatedInput[0] == "b") {
                 if constexpr(std::is_same_v<ptr, bool>) {
                     controller->addElement(new Button(connectedVar, seperatedInput[1])); 
+                    // Evaluating was Successful -> Therefore return True
+                    return true;
                 }
             }
 
@@ -78,9 +84,13 @@ class GUI {
                         controller->addElement(buttonGroups[(prevMax = index) - 1]);
                     }
                     buttonGroups[index - 1]->addButton(connectedVar, seperatedInput[2]);
+                    // Evaluating was Successful -> Therefore return True
+                    return true;
                 }
             }
-            
+
+            // No correct Parsing-Function can be Called --> Evaluate = false
+            return false;
         };
     public:
     //TODO MOVE TO PRIVATE

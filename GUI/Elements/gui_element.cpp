@@ -2,7 +2,7 @@
 
 unsigned char GUI_Element::instance_id_counter = 0;
 
-GUI_Element::GUI_Element() : instance_id(instance_id_counter++) {
+GUI_Element::GUI_Element() : instance_id(instance_id_counter++), selected(false) {
 
 }
 

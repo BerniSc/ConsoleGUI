@@ -7,44 +7,39 @@ int main() {
     int test_var_1 = 0;
     int test_var_2 = 0;
     int test_var_3 = 0;
-    int test_var_4 = 0;
 
+    bool test_var_4 = false;
     bool test_var_5 = false;
     bool test_var_6 = false;
-    
-    GUI::addElements("s#Hi#10#0", &test_var_1, \
-                     "s#Hi2#20#-10", &test_var_2, \
-                     "b#JUHUU", &test_var_6, \
-                     "bg#1#Hi", &test_var_5, \
-                     "bg#1#MOIN", &test_var_6, \
-                     "bg#1#MOINsena", &test_var_6, \
-                     "s#SIZETEST#50#0", &test_var_4);
 
+    // Initialise GUI with Elements -> These will be displayed later    
+    GUI::addElements("s#Slider 1#10#0", &test_var_1, \
+                     "s#My Second Slider#20#-10", &test_var_2, \
+                     "b#My Single Button", &test_var_4, \
+                     "bg#1#1st Button-Group Element", &test_var_4, \
+                     "bg#1#second Button", &test_var_5, \
+                     "bg#1#third ", &test_var_6, \
+                     "s#My Last Slider#50#0", &test_var_3);
+
+    // Start the GUI with the configured Elements
+    // GUI blocks calling thread until it is terminated
     GUI::startGUI();
 
-    //getchar();
-    //std::cout << "\033[2J\033[1;1H" << std::endl;
-    //std::cout << "\033[2J\033[1;1H";
-    //std::cout << "\033[2J\033[1;1H";
+    // Adding Elements also works later 
+    GUI::addElements("b#This Button was Added Later...", &test_var_6);
 
     using namespace std::chrono_literals;
 
-    //std::this_thread::sleep_for(1000ms);
-    //std::cout << "\033[2J\033[1;1H";
-    //std::this_thread::sleep_for(5000ms);
-    //std::cout << "hii" << std::endl;
-
-    //GUI::startGUI();
+    // Other Code using the configured Elements...
     while(true) {
         static int i = 0;
         std::this_thread::sleep_for(1000ms);
-        std::cout << "HIII" << std::endl;
+        std::cout << "Important Function from other part of Code Nr. " << i << "..." << std::endl;
         if(++i == 10) break;
     }
 
+    // Start GUI again...
     GUI::startGUI();
 
-    std::cout << "STARTING REAL PROGRAMM NOWWW with " << test_var_1 << "|" << test_var_2 << "|" << test_var_3 << "|" << test_var_4 << "|" << test_var_5 << std::endl;
-
-    return 1;
+    return 0;
 }

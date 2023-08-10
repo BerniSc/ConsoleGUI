@@ -36,6 +36,8 @@ void ButtonGroup::changeElementBulk(gui_config::direction direction) {
     if((this->currentSelection + direction) >= 0) {
         currentSelection += direction;
         currentSelection %= this->buttons.size();
+    } else {
+        currentSelection = this->buttons.size() - 1;
     }
     button->setSelected(false);
     button = buttons[currentSelection];

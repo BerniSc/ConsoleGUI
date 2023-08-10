@@ -27,7 +27,7 @@ std::string Button::getOuterLine() const {
 
 std::string Button::getInnerLine() const {
     int descriptionLenght = this->description.length();
-    //Ensure that description length is even for placing element in center
+    //Ensure that description length is even for placing element in center, in doubt increase length rather than overshorten it
     if((descriptionLenght % 2)) descriptionLenght++;
     // -1 because of outer '#', -descriptionLenght to calculate out the text
     int stringOffset = (this->width - 1 - descriptionLenght) / 2;
@@ -38,11 +38,13 @@ std::string Button::getInnerLine() const {
         line += " ";
     }
     line += description;
-    //for(int i = 0; i < stringOffset; i++) {
-    //    line += " ";
-    //}
-    while(line.size() + 1 < this->width) line += " ";
+
+    // Fill rest of Line with Padding
+    while(int(line.size() + 1) < this->width) line += " ";
+    // End the Line with the appropiate Element (If selected end with %, else with #)
     line += selected ? "%" : "#";
+
+    // Return the Inner Line of the Button
     return line;
 }
 
@@ -60,6 +62,8 @@ void Button::toggleElement() {
 }
 
 void Button::printElement() {
+    // Every outer line is always indented by offset from Left, + 2 because buttons do not need a min value and min values have offset of 2 from Element
+    // String Constructor (int, char) sets string of length int with value char  
     std::string outerLine = std::string(gui_config::offsetFromLeft + 2, ' ');
     std::string innerLine = "";
     if(this->getSelected()) {
@@ -76,10 +80,15 @@ void Button::printElement() {
 }
 
 void Button::changeElement(gui_config::direction direction) {
-       // TODO -> Find Out why setSelected does not seem to work itsself on pure Buttons and therefore this is required
-       this->selected = getSelected();
+    // TODO -> Find Out why setSelected does not seem to work itsself on pure Buttons and therefore this is required
+    // Does NOT Reset for normal Button Element once next line is executed -> TODO Check why 
+    //this->selected = getSelected();
+
+    // Toggle the Element (Button has just 2 States)
+   *variable = !(*variable);
 }
 
 void Button::changeElementBulk(gui_config::direction direction) {
-
+     // Toggle the Element (Button has just 2 States)
+    *variable = !(*variable);
 }
