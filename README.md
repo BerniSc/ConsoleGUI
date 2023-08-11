@@ -7,6 +7,7 @@ Project to write a simple, universal console GUI for providing Sliders, Buttons 
 The selected Row can be changed by pressing 'w' for up or 's' for down. The value can be changed (single) by 'a' or 'd' or bulk-wise by 'A' or 'D' and toggled by Space.
 The GUI Application is closed by pressing 'q'.<br>
 In the specific case of the Button-Group the values can be changed by 'a', 'd' or Space and the selected Button is switched by 'A' and 'D'.<br> 
+<br>The width of the GUI and other paramters can be changed before the build using the **GUI/gui_config.hpp** file.<br>
 
 The Idea is that for example the GUI is put before the acutal programm or in specified parts of the actual programm that allow for the changing of Parameters.<br>
 
