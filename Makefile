@@ -16,7 +16,9 @@ PROJECTNAME = gui
 OBJECTS_LIB = $(SOURCES_GUI:.cpp=.o)
 
 # Library Name = Console-GUI.so
-LIBNAME = cguilib.so
+# Once the Lib has been built the lib can be used with the desired Project using the compile command ${COMPILE_COMMAND} -lcguilib
+# Then the Executable can be run using LD_LIBRARY_PATH=. in the ConsoleGUI Path
+LIBNAME = libcguilib.so
 
 # default Target -> GUI with Source-Code fully embedded into own project
 $(PROJECTNAME) : $(SOURCES_COMBINED)
